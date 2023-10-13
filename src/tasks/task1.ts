@@ -27,16 +27,21 @@ const actor = {
 const howOldWillBeActorAfterTwentyYears = (actor: Iactor): number => {
     return actor.age + 20;
 }
+
 console.log(howOldWillBeActorAfterTwentyYears(actor)); 
 
-// Задание 2
-// document.addEventListener('click', (e: MouseEvent) => {
+// Задание 2 ???
+// document.addEventListener('click', (e) => {
 //     const coords: number[] = [e.posX, e.posY];
 //     console.log(`Point is ${coords[0]}, ${coords[1]}`);
 // });
 
 
 // Задание 3
+
+// Данная функция считает количесвто людей мужского пола, которым больше 18 лет
+// Данный код не имеет типизации
+
 // function someFunc(data) {
 //     return data.reduce((acc, current) => {
 //         acc + Number(current.age > 18 && current.isMale), 0);
@@ -44,13 +49,18 @@ console.log(howOldWillBeActorAfterTwentyYears(actor));
 // }
 
 
-export type Human = {
-    name: string,
-    age: number,
-    gender: 'male' | 'female',
+// Данная функция считает количесвто людей мужского пола, которым больше 18 лет
+// Данная функция четко типизированная
+type Human = {
+    name: string;
+    age: number;
+    gender: 'male' | 'female';
 }
 
-;
+function someFunc(data: Human[]): number {
+    return data.reduce((acc: number, current: Human) => {
+        return acc + (current.age > 18 && current.gender === 'male' ? 1 : 0);
+    }, 0);
 }
 
 
