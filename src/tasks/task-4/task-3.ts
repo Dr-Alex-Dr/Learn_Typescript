@@ -44,7 +44,6 @@ class Earthling extends Human {
     }
 }
   
-// Класс для криптонцев
 class Kryptonian extends Human {
     run() {
         console.log("Криптонец бегает");
