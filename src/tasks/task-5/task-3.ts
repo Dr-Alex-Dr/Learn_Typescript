@@ -12,25 +12,16 @@ class MyArray<T> {
             return index1 === index2;
         }
       
-        const keys1 = Object.keys(index1);
-        const keys2 = Object.keys(index2);
+        const keys1 = Object.keys(index1)
+        const keys2 = Object.keys(index2)
                
         if (keys1.length !== keys2.length) {
             return false;
         }
-             
-        for (let key in index1) {
-            if (typeof index1[key] === 'object') {
-                (index1 as any)[key] = '';
-            }
-        }
-        for (let key in index2) {
-            if (typeof index2[key] === 'object') {
-                (index2 as any)[key] = '';
-            }
-        }
+        
+        const keys = Object.keys(index1) as Array<keyof typeof index1>
 
-        return JSON.stringify(index1)===JSON.stringify(index2);
+        return keys.every(item => index2[item] && index1[item] === index2[item])
     } 
 
     flatten<T>(arr:  NestedArray<T>): T[] {
